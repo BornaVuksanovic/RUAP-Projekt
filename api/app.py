@@ -17,6 +17,20 @@ with open("league_map.json") as f:
 with open("nation_map.json") as f:
     nation_map = json.load(f)
 
+
+@app.route("/leagues", methods=["GET"])
+def get_leagues():
+    return jsonify(league_map)
+
+@app.route("/clubs", methods=["GET"])
+def get_clubs():
+    return jsonify(club_map)
+
+@app.route("/nations", methods=["GET"])
+def get_nations():
+    return jsonify(nation_map)
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.json
