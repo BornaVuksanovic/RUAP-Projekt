@@ -1,0 +1,71 @@
+.foot-icon {
+    width: 100px;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: all 0.2s ease;
+}
+
+.foot-icon.selected {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+.foot-icon.selected { opacity: 1; }
+
+.field-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+
+.field-wrapper {
+    max-width: 100%;
+}
+
+.field-pos {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.field-pos.selected {
+    background: yellow;
+    border-color: red;
+}
+
+
+.jersey-wrapper {
+    position: relative;
+    width: 300px;
+}
+
+.jersey-img {
+    width: 100%;
+}
+
+#jersey-number {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #2d2f31;
+    margin-bottom: 3px;
+}
