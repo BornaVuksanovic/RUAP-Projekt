@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import pickle
 import numpy as np
 import json
@@ -20,7 +20,7 @@ with open(os.path.join(BASE_DIR, "nation_map.json")) as f:
     nation_map = json.load(f)
 with open(os.path.join(BASE_DIR, "league_clubs.json")) as f:
     league_clubs = json.load(f)
-    
+
 @app.route("/leagues", methods=["GET"])
 def get_leagues():
     return jsonify(league_map)
@@ -60,6 +60,10 @@ def predict():
     y_pred = np.expm1(y_pred_log)  
     
     return jsonify({"predicted_value_eur": round(float(y_pred[0]), 2)})
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
