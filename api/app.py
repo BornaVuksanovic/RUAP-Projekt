@@ -16,7 +16,8 @@ with open("league_map.json") as f:
     league_map = json.load(f)
 with open("nation_map.json") as f:
     nation_map = json.load(f)
-
+with open("league_clubs.json") as f:
+    league_clubs = json.load(f)
 
 @app.route("/leagues", methods=["GET"])
 def get_leagues():
@@ -30,6 +31,15 @@ def get_clubs():
 def get_nations():
     return jsonify(nation_map)
 
+
+
+@app.route("/league_clubs/<league_id>", methods=["GET"])
+def get_league_clubs(league_id):
+    league_id = str(league_id)
+    if league_id in league_clubs:
+        clubs_in_league = {cid: club_map[str(cid)] for cid in league_clubs[league_id]}
+        return jsonify(clubs_in_league)
+    return jsonify({})
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -50,4 +60,5 @@ def predict():
     return jsonify({"predicted_value_eur": round(float(y_pred[0]), 2)})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000)
+
