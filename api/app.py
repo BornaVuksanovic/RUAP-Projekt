@@ -3,22 +3,24 @@ import pickle
 import numpy as np
 import json
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-with open("RandomForest_best_model.pkl", "rb") as f:
+with open(os.path.join(BASE_DIR, "RandomForest_best_model.pkl"), "rb") as f:
     model = pickle.load(f)
 
-with open("club_map.json") as f:
+with open(os.path.join(BASE_DIR, "club_map.json")) as f:
     club_map = json.load(f)
-with open("league_map.json") as f:
+with open(os.path.join(BASE_DIR, "league_map.json")) as f:
     league_map = json.load(f)
-with open("nation_map.json") as f:
+with open(os.path.join(BASE_DIR, "nation_map.json")) as f:
     nation_map = json.load(f)
-with open("league_clubs.json") as f:
+with open(os.path.join(BASE_DIR, "league_clubs.json")) as f:
     league_clubs = json.load(f)
-
+    
 @app.route("/leagues", methods=["GET"])
 def get_leagues():
     return jsonify(league_map)
