@@ -39,8 +39,8 @@
     <div class="col-md-2 text-center">
         <label class="form-label">Preferred foot</label>
         <div class="d-flex justify-content-center gap-2 mt-2">
-        <img src="assets/left.png" id="leftFoot" class="foot-icon foot-icon-left">
-        <img src="assets/right.png" id="rightFoot" class="foot-icon foot-icon-right">
+        <img src="{{ url_for('static', filename='assets/left.png') }}" id="leftFoot" class="foot-icon foot-icon-left">
+        <img src="{{ url_for('static', filename='assets/right.png') }}" id="rightFoot" class="foot-icon foot-icon-right">
 
         </div>
     </div>
@@ -51,7 +51,7 @@
         <input type="range" min="1" max="99" value="1" id="club_jersey_number" class="form-range">
 
         <div class="jersey-wrapper mx-auto mt-2">
-            <img src="assets/soccer-jearsey.jpg" class="jersey-img">
+            <img src="{{ url_for('static', filename='assets/soccer-jearsey.jpg') }}" class="jersey-img">
             <div id="jersey-number">1</div>
         </div>
     </div>
@@ -60,7 +60,7 @@
         <label class="form-label">Pozicija</label>
 
         <div class="field-wrapper">
-            <img src="assets/socc-field.jpg" class="field-img">
+            <img src="{{ url_for('static', filename='assets/socc-field.jpg') }}" class="field-img">
 
             <button class="field-pos" data-pos="GK" style="top:50%; left:8%;">GK</button>         
             <button class="field-pos" data-pos="DEF" style="top:50%; left:20%;">DEF</button>

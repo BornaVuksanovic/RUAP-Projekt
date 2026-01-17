@@ -37,8 +37,8 @@ document.querySelectorAll(".field-pos").forEach(btn => {
 
 
 async function loadMaps() {
-    const leagues = await (await fetch("http://127.0.0.1:5000/leagues")).json();
-    const nations = await (await fetch("http://127.0.0.1:5000/nations")).json();
+    const leagues = await (await fetch("/leagues")).json();
+    const nations = await (await fetch("/nations")).json();
 
     Object.entries(leagues).forEach(([id, name]) => {
         let opt = document.createElement("option");
@@ -61,7 +61,7 @@ leagueSelect.addEventListener("change", async () => {
     dataList.innerHTML = "";
     clubNameToId = {};
 
-    const clubs = await (await fetch(`http://127.0.0.1:5000/league_clubs/${leagueId}`)).json();
+    const clubs = await (await fetch(`/league_clubs/${leagueId}`)).json();
     Object.entries(clubs).forEach(([id, name]) => {
         let opt = document.createElement("option");
         opt.value = name;
@@ -99,7 +99,7 @@ function predict() {
         Attack: position=="ATT"?1:0
     };
 
-    fetch("http://127.0.0.1:5000/predict", {
+    fetch("/predict", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
